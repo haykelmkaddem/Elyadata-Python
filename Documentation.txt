@@ -1,0 +1,27 @@
+main.py : 
+This is the main file of our FastAPI application. It imports the FastAPI class from the fastapi package, 
+as well as some other modules that are used in the application. It defines an instance of the FastAPI 
+class and sets up a Jinja2 template renderer. The application has one endpoint defined at the /scrape route, 
+which is responsible for calling the scrape_facebook function from scraper.py and retrieving posts from the 
+database using posts.py, and rendering them using a template.
+
+scraper.py : 
+This file contains a function named scrape_facebook that uses the facebook module to retrieve posts from a 
+specified Facebook page using an access token. It then inserts the posts into a MySQL database using the 
+mysql.connector module.
+
+posts.py : 
+This file contains a function named get_posts_from_database that retrieves all posts from a MySQL database 
+and returns them as a list of dictionaries, where each dictionary represents a post.
+
+test_scrape.py : 
+This file contains unit tests for the scrape_facebook and get_posts_from_database functions. The tests 
+ensure that the functions are working as expected and that the data being retrieved and inserted into the 
+database is accurate.
+
+docker-compose.yml : 
+This is the Docker Compose file that defines the services used by your application. It defines two services: 
+app and db. The app service builds and runs the FastAPI application, while the db service runs a MySQL 
+database. The file also sets up a port mapping to allow communication between the two services, as well as 
+environment variables for the database credentials.
+
